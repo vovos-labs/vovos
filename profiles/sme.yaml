@@ -1,0 +1,7 @@
+id: sme
+title: Small or medium Data Fiduciary
+description: >
+  Same controls as base. Kept as a separate profile so that any exemptions the
+  Central Government notifies for startups or smaller fiduciaries (Section 17(3))
+  can be added here as documented exclusions without changing the base profile.
+extends: [base]

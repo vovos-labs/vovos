@@ -1,0 +1,29 @@
+id: DPDP-BRE-001
+title: Personal data breaches are reported to the Board and to affected Data Principals
+description: >
+  A documented and rehearsed procedure exists to inform each affected Data
+  Principal and the Data Protection Board of a personal data breach without
+  delay, followed by a detailed report to the Board within the period the Rules
+  specify (72 hours, unless the Board allows longer).
+citation:
+  act: ["Section 8(6)"]
+  rules: ["Rule 7"]
+severity: critical
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-BRE-001.q1
+      question: >
+        Is there a written breach procedure that names who notifies the Board and the
+        affected Data Principals, contains the content required by Rule 7, meets the
+        72-hour detailed-report deadline, and has been tested in the last 12 months?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    The Rules require intimation even where a breach is unlikely to cause harm;
+    there is no materiality threshold as in some other regimes.
+review_status: draft
+since: "2025.11-draft.1"

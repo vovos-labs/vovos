@@ -1,0 +1,51 @@
+name: Interpretation RFC
+description: Propose a change to what a control requires, its severity, or how the law is read.
+title: "[RFC] <control id>: <short summary>"
+labels: ["legal-review", "rfc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        RFCs stay open for comment for at least 14 days. A legal reviewer records the outcome.
+        If consensus is not reached, the control is marked `contested` and the competing readings are summarised.
+        Please argue from the legal text and public sources; do not promote or disparage any product.
+  - type: input
+    id: control
+    attributes:
+      label: Control id(s)
+      placeholder: DPDP-CON-003
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current reading
+      description: What the control currently requires and how it is tested.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: Proposed reading
+      description: What should change: requirement, test, parameters, severity or confidence.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Legal basis
+      description: Sections, Rules, Schedules, Board orders or guidance, judgments, or credible commentary, with links.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Which organisations or results would change? Any risk of false assurance?
+  - type: textarea
+    id: interests
+    attributes:
+      label: Declaration of interests
+      description: Do you or your employer build, sell or advise on products affected by this control?
+    validations:
+      required: true

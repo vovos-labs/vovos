@@ -1,0 +1,59 @@
+# Hosts treated as tracking or advertising when contacted before the visitor
+# has interacted with any consent interface.
+#
+#   domain       matches the host itself and any subdomain
+#   path_prefix  optional; only requests whose path starts with this match
+#   action       fail   -> the request itself is a tracking/advertising beacon
+#                review -> a loader or tag manager; legitimate if it waits for consent
+#
+# Add entries by pull request. Please include a public source showing the host
+# is used for analytics, advertising or behavioural tracking.
+
+- {domain: google-analytics.com, name: Google Analytics, category: analytics, action: fail}
+- {domain: analytics.google.com, name: Google Analytics, category: analytics, action: fail}
+- {domain: doubleclick.net, name: Google Ads / DoubleClick, category: advertising, action: fail}
+- {domain: googlesyndication.com, name: Google AdSense, category: advertising, action: fail}
+- {domain: googleadservices.com, name: Google Ads conversion, category: advertising, action: fail}
+- {domain: adservice.google.com, name: Google Ads, category: advertising, action: fail}
+- {domain: googletagmanager.com, name: Google Tag Manager / gtag loader, category: tag-manager, action: review}
+- {domain: connect.facebook.net, name: Meta Pixel loader, category: advertising, action: fail}
+- {domain: www.facebook.com, path_prefix: /tr, name: Meta Pixel, category: advertising, action: fail}
+- {domain: clarity.ms, name: Microsoft Clarity, category: session-replay, action: fail}
+- {domain: bat.bing.com, name: Microsoft Advertising UET, category: advertising, action: fail}
+- {domain: snap.licdn.com, name: LinkedIn Insight Tag, category: advertising, action: fail}
+- {domain: px.ads.linkedin.com, name: LinkedIn Insight Tag, category: advertising, action: fail}
+- {domain: static.ads-twitter.com, name: X (Twitter) Pixel, category: advertising, action: fail}
+- {domain: analytics.twitter.com, name: X (Twitter) analytics, category: advertising, action: fail}
+- {domain: analytics.tiktok.com, name: TikTok Pixel, category: advertising, action: fail}
+- {domain: tr.snapchat.com, name: Snap Pixel, category: advertising, action: fail}
+- {domain: sc-static.net, name: Snap Pixel loader, category: advertising, action: fail}
+- {domain: ct.pinterest.com, name: Pinterest Tag, category: advertising, action: fail}
+- {domain: criteo.com, name: Criteo, category: advertising, action: fail}
+- {domain: criteo.net, name: Criteo, category: advertising, action: fail}
+- {domain: taboola.com, name: Taboola, category: advertising, action: fail}
+- {domain: outbrain.com, name: Outbrain, category: advertising, action: fail}
+- {domain: scorecardresearch.com, name: Comscore, category: analytics, action: fail}
+- {domain: quantserve.com, name: Quantcast, category: advertising, action: fail}
+- {domain: hotjar.com, name: Hotjar, category: session-replay, action: fail}
+- {domain: fullstory.com, name: FullStory, category: session-replay, action: fail}
+- {domain: mouseflow.com, name: Mouseflow, category: session-replay, action: fail}
+- {domain: mixpanel.com, name: Mixpanel, category: analytics, action: fail}
+- {domain: amplitude.com, name: Amplitude, category: analytics, action: fail}
+- {domain: heapanalytics.com, name: Heap, category: analytics, action: fail}
+- {domain: segment.io, name: Segment, category: analytics, action: fail}
+- {domain: cdn.segment.com, name: Segment loader, category: analytics, action: fail}
+- {domain: mc.yandex.ru, name: Yandex Metrica, category: analytics, action: fail}
+- {domain: omtrdc.net, name: Adobe Analytics, category: analytics, action: fail}
+- {domain: demdex.net, name: Adobe Audience Manager, category: advertising, action: fail}
+- {domain: assets.adobedtm.com, name: Adobe Launch loader, category: tag-manager, action: review}
+- {domain: tags.tiqcdn.com, name: Tealium loader, category: tag-manager, action: review}
+- {domain: hs-analytics.net, name: HubSpot analytics, category: analytics, action: fail}
+- {domain: hs-scripts.com, name: HubSpot loader, category: tag-manager, action: review}
+- {domain: appsflyer.com, name: AppsFlyer, category: attribution, action: fail}
+- {domain: branch.io, name: Branch, category: attribution, action: fail}
+# Engagement and analytics platforms widely used in India
+- {domain: moengage.com, name: MoEngage, category: engagement, action: fail}
+- {domain: webengage.com, name: WebEngage, category: engagement, action: fail}
+- {domain: wzrkt.com, name: CleverTap, category: engagement, action: fail}
+- {domain: clevertap-prod.com, name: CleverTap, category: engagement, action: fail}
+- {domain: netcoresmartech.com, name: Netcore Smartech, category: engagement, action: fail}

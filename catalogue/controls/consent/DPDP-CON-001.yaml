@@ -1,0 +1,23 @@
+id: DPDP-CON-001
+title: No tracking or advertising processing before consent
+description: >
+  Where consent is the basis for processing, personal data is not sent to
+  analytics, advertising or behavioural-tracking services before the Data
+  Principal has given consent.
+citation:
+  act: ["Section 4(1)", "Section 6(1)"]
+severity: critical
+tags: [base]
+test_methods:
+  - plugin: web-scan
+    check: pre_consent_trackers
+interpretation:
+  confidence: medium
+  note: >
+    The DPDP Act has no cookie-specific exemption. This control assumes that
+    third-party analytics and advertising are not a "legitimate use" under
+    Section 7 and therefore need consent. Strictly necessary first-party
+    processing is not flagged. An organisation relying on a Section 7 ground for a
+    specific service should allow-list it in an overlay and record the reason.
+review_status: draft
+since: "2025.11-draft.1"

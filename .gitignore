@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# assessment output and local answers usually contain internal information
+dpdp-report/
+answers.yaml
+*.local.yaml

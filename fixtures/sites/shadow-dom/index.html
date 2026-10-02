@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fixture: banner inside an open shadow root</title></head>
+<body>
+<h1>Shadow DOM banner</h1>
+<!-- Many CMPs (e.g. web components) render inside a shadow root. The detector must pierce open roots. -->
+<consent-widget></consent-widget>
+<script>
+  customElements.define('consent-widget', class extends HTMLElement {
+    connectedCallback() {
+      const root = this.attachShadow({ mode: 'open' });
+      root.innerHTML = `
+        <style>.bar{position:fixed;bottom:0;left:0;right:0;background:#eee;padding:12px}</style>
+        <div class="bar" id="cookie-consent">
+          <p>We use cookies for analytics. See our <a href="/privacy">privacy notice</a>.</p>
+          <label><input type="checkbox" checked> Analytics</label>
+          <button>Accept all</button>
+          <button>Reject all</button>
+        </div>`;
+    }
+  });
+</script>
+</body>
+</html>

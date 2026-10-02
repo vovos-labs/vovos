@@ -1,0 +1,10 @@
+id: government
+title: Government department or State instrumentality
+description: >
+  Base obligations. Processing under Section 7(b) (subsidies, benefits,
+  services, certificates) and any Section 17(2) exemption must be documented in
+  an organisation overlay as exclusions with reasons, because which exemptions
+  apply depends on the specific notification covering the department.
+extends: [base]
+include:
+  tags: [government]

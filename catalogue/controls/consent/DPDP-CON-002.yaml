@@ -1,0 +1,28 @@
+id: DPDP-CON-002
+title: Consent is given by a clear affirmative action; nothing is pre-selected
+description: >
+  Consent is signified by a clear affirmative action of the Data Principal for
+  each specified purpose. Optional purposes are not pre-ticked or switched on by
+  default, and silence, scrolling or continued use is not treated as consent.
+citation:
+  act: ["Section 6(1)"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: web-scan
+    check: no_prechecked_toggles
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CON-002.q1
+      question: >
+        In every channel, is consent recorded only after an explicit action by the
+        Data Principal (never by default, by scrolling, or by continued use)?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Section 6(1) requires consent to be "unambiguous with a clear affirmative
+    action". Pre-selected options and implied consent are widely read as failing that test.
+review_status: draft
+since: "2025.11-draft.1"

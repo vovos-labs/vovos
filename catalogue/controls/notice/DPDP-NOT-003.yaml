@@ -1,0 +1,28 @@
+id: DPDP-NOT-003
+title: Notice and consent request are available in English or any Eighth Schedule language
+description: >
+  The Data Principal can choose to read the notice and the consent request in
+  English or in any language specified in the Eighth Schedule to the Constitution.
+citation:
+  act: ["Section 5(3)", "Section 6(3)"]
+severity: medium
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-NOT-003.q1
+      question: >
+        Can the Data Principal choose to view the notice and the consent request in
+        English or any Eighth Schedule language, and is that choice offered in the
+        consent interface?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    The Act gives the Data Principal the option to access the notice in these
+    languages. Readings differ on whether all 22 languages must be available at
+    launch or whether a way to request any of them is enough. Record which
+    languages you support in the attestation note.
+review_status: draft
+since: "2025.11-draft.1"

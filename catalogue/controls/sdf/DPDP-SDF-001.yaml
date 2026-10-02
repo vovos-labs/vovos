@@ -1,0 +1,27 @@
+id: DPDP-SDF-001
+title: Annual Data Protection Impact Assessment and independent audit
+description: >
+  A Significant Data Fiduciary carries out a Data Protection Impact Assessment and
+  an audit by an independent data auditor every twelve months, and furnishes a
+  report of significant observations to the Board.
+citation:
+  act: ["Section 10(2)(b)", "Section 10(2)(c)"]
+  rules: ["Rule 13"]
+severity: critical
+tags: [sdf]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-SDF-001.q1
+      question: >
+        Has a DPIA and an independent data audit been completed in the last 12 months,
+        and has the report of significant observations been furnished to the Board?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Rule 13 also requires due diligence that algorithmic software used for processing
+    does not risk Data Principals' rights; consider adding a control for it in your overlay.
+review_status: draft
+since: "2025.11-draft.1"

@@ -1,0 +1,39 @@
+id: DPDP-RET-001
+title: Personal data is erased once the purpose is served or consent is withdrawn
+description: >
+  Personal data is erased, and Data Processors are made to erase it, once the
+  Data Principal withdraws consent or the specified purpose is no longer served,
+  unless retention is required by law. For the classes of Data Fiduciary in the
+  Third Schedule, the specified time periods apply and the Data Principal is
+  informed at least 48 hours before erasure.
+citation:
+  act: ["Section 8(7)", "Section 8(8)"]
+  rules: ["Rule 8"]
+  schedules: ["Third Schedule"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-RET-001.q1
+      question: >
+        Does every personal-data store have a documented retention period tied to its
+        purpose, with automated erasure (including at Data Processors) when the period
+        ends or consent is withdrawn?
+      expect: "yes"
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-RET-001.q2
+      question: >
+        If you fall within a Third Schedule class, do you notify the Data Principal at
+        least 48 hours before erasure? Answer "yes" if you are not in a Third Schedule class.
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Whether a fiduciary falls within a Third Schedule class depends on its sector
+    and user numbers; record the basis of your answer in the attestation note.
+review_status: draft
+since: "2025.11-draft.1"

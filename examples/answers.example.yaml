@@ -1,0 +1,39 @@
+# Example answers file for a fictional company. Generate your own with:
+#   dpdp-kit questionnaire --profile <profile> -o answers.yaml
+# Answers you leave empty are reported as NOT TESTED.
+
+DPDP-NOT-001.q1:
+  answer: yes
+  attested_by: "A. Sharma, Data Protection Officer"
+  date: 2026-10-01
+  evidence: ["https://intranet.example/privacy/notice-v3", "Screenshots in DMS folder PRIV-2026-10"]
+  note: "Same notice component used on web, Android and iOS. Call-centre script references it."
+
+DPDP-NOT-002.q1:
+  answer: partial
+  attested_by: "A. Sharma, Data Protection Officer"
+  date: 2026-10-01
+  note: "Purposes itemised; goods/services mapping still missing for the loyalty programme."
+
+DPDP-CON-004.q1:
+  answer: yes
+  attested_by: "R. Iyer, Head of Product"
+  date: 2026-10-01
+  evidence: ["JIRA PRIV-118"]
+  note: "Withdraw toggle in the same preference centre; one click each way."
+
+DPDP-CON-005.q1:
+  answer: unknown
+  note: "Need confirmation from the CRM vendor."
+
+DPDP-BRE-001.q1:
+  answer: no
+  attested_by: "S. Khan, CISO"
+  date: 2026-10-01
+  note: "Incident response plan predates the Rules; no Board-notification step yet."
+
+DPDP-SDF-002.q1:
+  answer: yes
+  attested_by: "Company Secretary"
+  date: 2026-09-15
+  evidence: ["Board resolution BR-2026-07"]

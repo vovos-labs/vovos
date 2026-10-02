@@ -1,0 +1,28 @@
+id: DPDP-NOT-001
+title: Notice is given with or before every request for consent
+description: >
+  Every request for consent is accompanied or preceded by a notice from the
+  Data Fiduciary, and the notice can be reached from the consent interface itself.
+citation:
+  act: ["Section 5(1)"]
+  rules: ["Rule 3"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: web-scan
+    check: notice_link_in_banner
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-NOT-001.q1
+      question: >
+        Is a notice shown with, or before, every request for consent in all channels
+        (website, app, forms, call centre, offline)?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    The web check only confirms that the website's consent interface links to a
+    notice. Other channels (app, offline forms, IVR) must be covered by the questionnaire.
+review_status: draft
+since: "2025.11-draft.1"

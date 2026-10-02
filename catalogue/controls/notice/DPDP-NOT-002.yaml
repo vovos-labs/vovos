@@ -1,0 +1,30 @@
+id: DPDP-NOT-002
+title: Notice itemises personal data, purposes and the goods or services involved
+description: >
+  The notice can be understood on its own, without reference to other information,
+  and gives an itemised description of the personal data collected, the specified
+  purpose for each, and the goods, services or uses that the processing enables.
+citation:
+  act: ["Section 5(1)(i)"]
+  rules: ["Rule 3"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-NOT-002.q1
+      question: >
+        Is the notice standalone and does it list, item by item, each category of
+        personal data, the specific purpose for which it is processed, and the
+        goods or services or uses that processing enables?
+      expect: "yes"
+      help: >
+        A link to a long general privacy policy, or "we may use your data to improve
+        our services", is unlikely to meet the itemisation requirement.
+interpretation:
+  confidence: high
+  note: >
+    An automated document-analysis check for this control is planned (doc-analyze plugin).
+review_status: draft
+since: "2025.11-draft.1"

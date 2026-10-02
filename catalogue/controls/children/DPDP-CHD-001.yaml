@@ -1,0 +1,30 @@
+id: DPDP-CHD-001
+title: Verifiable consent of a parent or lawful guardian is obtained
+description: >
+  Before processing a child's personal data, or that of a person with disability
+  who has a lawful guardian, the Data Fiduciary obtains verifiable consent from
+  the parent or guardian. It does so with due diligence that the person giving
+  consent is an identifiable adult, using reliable identity and age details or a
+  virtual token from an authorised entity.
+citation:
+  act: ["Section 9(1)"]
+  rules: ["Rule 10"]
+severity: critical
+tags: [children]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CHD-001.q1
+      question: >
+        Before processing a child's data, do you verify that the person consenting is an
+        identifiable adult parent or guardian, using reliable identity and age details
+        or a virtual token from an authorised entity (for example, a DigiLocker-based token)?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Classes of fiduciary and purposes exempted under Rule 11 and the Fourth Schedule
+    should be recorded as overlay exclusions with the specific exemption cited.
+review_status: draft
+since: "2025.11-draft.1"

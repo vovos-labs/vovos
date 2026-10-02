@@ -1,0 +1,26 @@
+id: DPDP-CON-006
+title: Records prove that notice was given and consent obtained
+description: >
+  The Data Fiduciary keeps records sufficient to prove, for each Data Principal,
+  that notice was given and consent was obtained (what was agreed, when, through
+  which notice version and channel), and that withdrawals were honoured.
+citation:
+  act: ["Section 6(10)"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CON-006.q1
+      question: >
+        For any Data Principal, can you produce a record showing the notice version
+        shown, the purposes consented to, the time and channel, and any later withdrawal?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Section 6(10) puts the burden of proof on the Data Fiduciary in any proceeding
+    about whether notice was given and consent obtained.
+review_status: draft
+since: "2025.11-draft.1"

@@ -1,0 +1,26 @@
+id: DPDP-CM-003
+title: Consent Manager keeps consent records for at least seven years and shows them to the Data Principal
+description: >
+  The Consent Manager maintains records of consents given, denied and withdrawn,
+  of the notices preceding them, and of data sharing, for at least seven years,
+  and lets each Data Principal access their records in machine-readable form.
+citation:
+  rules: ["Rule 4"]
+  schedules: ["First Schedule, Part B"]
+severity: high
+tags: [consent-manager]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CM-003.q1
+      question: >
+        Are consent, denial, withdrawal, notice and sharing records retained for at least
+        seven years (or longer if agreed or required by law), and can each Data Principal
+        download their own records in a machine-readable format?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: ""
+review_status: draft
+since: "2025.11-draft.1"

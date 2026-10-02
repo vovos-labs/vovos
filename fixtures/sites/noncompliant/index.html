@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fixture: non-conforming shop</title>
+<!-- Deliberately non-conforming: trackers fire on load, no decline option,
+     an optional purpose is pre-selected, and the banner has no notice link. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FIXTURE"></script>
+<style>
+  body { font-family: sans-serif; margin: 0; padding: 24px; }
+  #cookie-consent-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 16px; }
+  #cookie-consent-banner button { margin-right: 8px; padding: 8px 14px; }
+  .accept { background: #2b7; color: #fff; border: 0; font-size: 1.1rem; }
+</style>
+</head>
+<body>
+<h1>Example Shop</h1>
+<p>Fixture page used by the dpdp-kit test suite.</p>
+<img src="https://www.facebook.com/tr?id=000000&amp;ev=PageView&amp;noscript=1" width="1" height="1" alt="">
+
+<div id="cookie-consent-banner">
+  <p>We use cookies to improve your experience and show you relevant offers.</p>
+  <label><input type="checkbox" checked disabled> Necessary</label>
+  <label><input type="checkbox" checked> Marketing</label>
+  <div style="margin-top:8px">
+    <button class="accept">Accept all</button>
+    <button>Manage settings</button>
+  </div>
+</div>
+</body>
+</html>

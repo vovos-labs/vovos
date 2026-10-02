@@ -1,0 +1,31 @@
+id: DPDP-CM-002
+title: Consent Manager avoids conflicts of interest with Data Fiduciaries
+description: >
+  The Consent Manager has measures to avoid conflicts of interest with Data
+  Fiduciaries, including with its promoters, directors and key managerial
+  personnel, and publishes the ownership and management information that the
+  First Schedule requires.
+citation:
+  act: ["Section 6(8)"]
+  rules: ["Rule 4"]
+  schedules: ["First Schedule, Part B"]
+severity: critical
+tags: [consent-manager]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CM-002.q1
+      question: >
+        Is there a documented conflict-of-interest policy covering promoters, directors
+        and key managerial personnel, with no shareholding or management link to a Data
+        Fiduciary served that has not been disclosed and managed, and is the required
+        ownership information published?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    What counts as a conflict (for example, a minority shareholding by a Data Fiduciary
+    customer) will be clarified by Board practice. Record the analysis in the attestation note.
+review_status: draft
+since: "2025.11-draft.1"

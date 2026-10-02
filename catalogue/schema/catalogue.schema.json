@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalogue metadata",
+  "type": "object",
+  "required": ["version", "status", "law", "license"],
+  "properties": {
+    "version": { "type": "string" },
+    "status": { "enum": ["draft", "released"] },
+    "license": { "type": "string" },
+    "law": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "as_of"],
+        "properties": {
+          "title": { "type": "string" },
+          "as_of": { "type": "string" },
+          "url": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "changelog": { "type": "string" }
+  }
+}

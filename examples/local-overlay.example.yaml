@@ -1,0 +1,25 @@
+# Organisation overlay: applied on top of --profile. Everything here appears in
+# the report, so exclusions and overrides are visible to anyone who reads it.
+#
+#   dpdp-kit run --profile base --overlay examples/local-overlay.example.yaml \
+#                --plugins-dir examples/plugins --url https://www.example.com
+
+# Pull in your own controls (use your own id prefix, never DPDP-).
+extra_controls: [org-controls]
+include:
+  ids: ["ACME-*"]
+
+# Exclusions need a documented reason; they are reported as N/A.
+exclude:
+  DPDP-NOT-003: "Internal HR portal used only by employees who chose English at onboarding; legal opinion LEG-2026-04."
+
+# Overrides need a reason too.
+overrides:
+  DPDP-CON-001:
+    params:
+      web-scan.pre_consent_trackers:
+        allow_domains: [googletagmanager.com]
+    reason: "GTM container is configured with consent mode; no tags fire before consent (verified in TAG-77)."
+  DPDP-RET-001:
+    severity: critical
+    reason: "Board risk appetite statement treats over-retention as a critical risk."

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DPDP self-assessment: {{ report.target.name or report.target.url or report.profile.title }}</title>
+<style>
+  :root {
+    --bg: #fbfbfa; --surface: #ffffff; --text: #1d1d1b; --muted: #5f5f5a; --border: #e3e2de;
+    --fail: #b42318; --fail-bg: #fdecea; --review: #8a5a00; --review-bg: #fdf3dc;
+    --pass: #1f7a3d; --pass-bg: #e6f4ea; --attested: #1d5fa8; --attested-bg: #e5eef9;
+    --neutral: #5f5f5a; --neutral-bg: #efefec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161615; --surface: #1f1f1d; --text: #ecebe7; --muted: #a3a29c; --border: #34332f;
+      --fail: #ff8a80; --fail-bg: #3a1714; --review: #f2c26b; --review-bg: #33280f;
+      --pass: #7fd39a; --pass-bg: #12301c; --attested: #8fbcf2; --attested-bg: #142538;
+      --neutral: #a3a29c; --neutral-bg: #2a2a27;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.6rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 12px; }
+  .muted { color: var(--muted); }
+  .disclaimer { border: 1px solid var(--border); border-left: 4px solid var(--review); background: var(--surface); padding: 12px 16px; border-radius: 6px; margin: 20px 0; font-size: .92rem; }
+  .headline { font-size: 1.05rem; margin: 16px 0; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+  .tile b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+  .s-fail { color: var(--fail); background: var(--fail-bg); }
+  .s-review, .s-error { color: var(--review); background: var(--review-bg); }
+  .s-pass { color: var(--pass); background: var(--pass-bg); }
+  .s-attested { color: var(--attested); background: var(--attested-bg); }
+  .s-not_tested, .s-na { color: var(--neutral); background: var(--neutral-bg); }
+  details.control { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin: 8px 0; }
+  details.control > summary { cursor: pointer; padding: 10px 14px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; list-style: none; }
+  details.control > summary::-webkit-details-marker { display: none; }
+  .cid { font-family: ui-monospace, Consolas, monospace; font-size: .85rem; color: var(--muted); }
+  .body { padding: 0 14px 14px; border-top: 1px solid var(--border); }
+  .method { border-left: 3px solid var(--border); padding: 6px 0 6px 12px; margin: 12px 0; }
+  .method code { font-size: .85rem; }
+  pre { white-space: pre-wrap; word-break: break-word; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 8px; font-size: .8rem; max-height: 320px; overflow: auto; }
+  img.shot { max-width: 100%; border: 1px solid var(--border); border-radius: 6px; margin-top: 6px; }
+  .sev { font-size: .8rem; color: var(--muted); }
+  a { color: var(--attested); }
+  footer { margin-top: 48px; font-size: .85rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>DPDP self-assessment report</h1>
+  <div class="muted">
+    {% if report.target.name %}{{ report.target.name }} · {% endif %}
+    {% if report.target.url %}{{ report.target.url }} · {% endif %}
+    Profile <b>{{ report.profile.title }}</b> ({{ report.profile.chain | join(" → ") }}{% if report.profile.overlay %} + local overlay{% endif %})
+    · Catalogue {{ report.catalogue.version }}{% if report.catalogue.status %} ({{ report.catalogue.status }}){% endif %}
+    · {{ report.generated_at[:19] | replace("T", " ") }} UTC
+  </div>
+
+  <div class="disclaimer"><b>Self-assessment only.</b> {{ report.disclaimer }}</div>
+
+  <p class="headline">{{ headline }}</p>
+
+  {% set s = report.summary.by_status %}
+  <div class="tiles">
+    <div class="tile"><span class="chip s-fail">Gaps</span><b>{{ s['fail'] }}</b></div>
+    <div class="tile"><span class="chip s-review">Review</span><b>{{ s['review'] }}</b></div>
+    <div class="tile"><span class="chip s-pass">Pass</span><b>{{ s['pass'] }}</b></div>
+    <div class="tile"><span class="chip s-attested">Attested</span><b>{{ s['attested'] }}</b></div>
+    <div class="tile"><span class="chip s-not_tested">Not tested</span><b>{{ s['not_tested'] }}</b></div>
+    <div class="tile"><span class="chip s-na">N/A</span><b>{{ s['n/a'] }}</b></div>
+  </div>
+
+  {% if report.warnings %}
+  <h2>Warnings</h2>
+  <ul>{% for w in report.warnings %}<li>{{ w }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% set groups = [
+      ("fail", "Gaps found"),
+      ("review", "Needs human review"),
+      ("not_tested", "Not tested"),
+      ("attested", "Attested by a person"),
+      ("pass", "No gap found by automated checks"),
+      ("n/a", "Not applicable (excluded by profile or overlay)")] %}
+  {% for status, heading in groups %}
+    {% set items = ordered | selectattr("status", "equalto", status) | list %}
+    {% if items %}
+    <h2>{{ heading }} <span class="muted">({{ items | length }})</span></h2>
+    {% for c in items %}
+    <details class="control"{% if status in ("fail", "review") %} open{% endif %}>
+      <summary>
+        <span class="chip s-{{ c.status | replace('/', '') }}">{{ c.status | replace("_", " ") }}</span>
+        <span class="cid">{{ c.id }}</span>
+        <span>{{ c.title }}</span>
+        <span class="sev">{{ c.severity }}{% if c.severity != c.catalogue_severity %} (catalogue: {{ c.catalogue_severity }}){% endif %}</span>
+      </summary>
+      <div class="body">
+        <p class="muted">{{ c.citation_text }} · interpretation confidence: <b>{{ c.interpretation.confidence }}</b> · {{ c.review_status }}</p>
+        <p>{{ c.description }}</p>
+        {% if c.interpretation.note %}<p class="muted"><i>Interpretation note:</i> {{ c.interpretation.note }}</p>{% endif %}
+        {% if c.excluded_reason %}<p><b>Excluded:</b> {{ c.excluded_reason }}</p>{% endif %}
+        {% if c.override_reason %}<p><b>Profile override:</b> {{ c.override_reason }}</p>{% endif %}
+        {% for m in c.methods %}
+        <div class="method">
+          <span class="chip s-{{ m.status }}">{{ m.status | replace("_", " ") }}</span>
+          <code>{{ m.method }}</code> <span class="muted">({{ m.kind }})</span>
+          <div>{{ m.detail }}</div>
+          {% for e in m.evidence %}
+            <div style="margin-top:6px">
+              <span class="muted">{{ e.label }}:</span>
+              {% if e.kind == "screenshot" and e.path %}
+                <a href="{{ e.path }}">{{ e.path }}</a>{% if e.sha256 %} <span class="cid">sha256 {{ e.sha256[:16] }}…</span>{% endif %}
+                <br><img class="shot" src="{{ e.path }}" alt="{{ e.label }}" loading="lazy">
+              {% elif e.path %}
+                <a href="{{ e.path }}">{{ e.path }}</a>{% if e.sha256 %} <span class="cid">sha256 {{ e.sha256[:16] }}…</span>{% endif %}
+              {% elif e.kind == "reference" %}
+                {{ e.content }}
+              {% else %}
+                <pre>{% if e.content is string %}{{ e.content }}{% else %}{{ e.content | tojson_pretty }}{% endif %}</pre>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </details>
+    {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+  <footer>
+    Generated by dpdp-kit {{ report.tool.version }} · report schema {{ report.schema }}.
+    Machine-readable version: <a href="report.json">report.json</a>.
+  </footer>
+</main>
+</body>
+</html>

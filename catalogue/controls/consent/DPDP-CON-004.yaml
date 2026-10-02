@@ -1,0 +1,25 @@
+id: DPDP-CON-004
+title: Withdrawing consent is as easy as giving it
+description: >
+  The Data Principal can withdraw consent at any time, with ease comparable to
+  the ease with which consent was given, ideally from the same interface.
+citation:
+  act: ["Section 6(4)"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CON-004.q1
+      question: >
+        Can a Data Principal withdraw consent through the same interface (or one as
+        easily reached) and in no more steps than it took to give consent?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    The Act does not define "ease". Step-count parity and equal prominence are
+    used as the proxy. An automated web check (withdrawal_parity) is planned.
+review_status: draft
+since: "2025.11-draft.1"

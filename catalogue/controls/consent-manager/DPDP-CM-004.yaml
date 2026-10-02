@@ -1,0 +1,31 @@
+id: DPDP-CM-004
+title: Consent Manager acts in a fiduciary capacity without reading or subcontracting the data
+description: >
+  The Consent Manager acts in a fiduciary capacity towards Data Principals. It
+  makes personal data available or shares it in a way that does not let it read
+  the contents, and it does not subcontract or assign the performance of its
+  obligations under the Act and Rules.
+citation:
+  act: ["Section 6(8)"]
+  rules: ["Rule 4"]
+  schedules: ["First Schedule, Part B"]
+severity: critical
+tags: [consent-manager]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CM-004.q1
+      question: >
+        Is the platform designed so that personal data shared through it cannot be read
+        by the Consent Manager (for example, end-to-end encrypted between fiduciaries),
+        and is no part of the Consent Manager's obligations subcontracted or assigned?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    Whether using cloud hosting or other infrastructure vendors counts as
+    "subcontracting" the Consent Manager's obligations is not settled. Record the
+    architecture and vendor list in evidence.
+review_status: draft
+since: "2025.11-draft.1"

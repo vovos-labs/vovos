@@ -1,0 +1,25 @@
+id: DPDP-CHD-002
+title: No tracking, behavioural monitoring or targeted advertising directed at children
+description: >
+  The Data Fiduciary does not track or behaviourally monitor children, and does
+  not direct targeted advertising at them.
+citation:
+  act: ["Section 9(3)"]
+severity: critical
+tags: [children]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CHD-002.q1
+      question: >
+        For users known or likely to be children, are behavioural tracking, profiling
+        and targeted advertising switched off in every product surface and SDK?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    Section 9(3) is a prohibition and does not depend on consent; parental consent
+    does not make such processing lawful unless an exemption has been notified.
+review_status: draft
+since: "2025.11-draft.1"

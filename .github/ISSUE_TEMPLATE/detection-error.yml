@@ -1,0 +1,29 @@
+name: Wrong result (false positive or negative)
+description: A check reported FAIL, PASS or REVIEW incorrectly.
+title: "[Detection] <check key>: <short summary>"
+labels: ["bug", "detection"]
+body:
+  - type: input
+    id: check
+    attributes:
+      label: Check key
+      placeholder: web-scan.reject_option_first_layer
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: >
+        Ideally a small HTML page we can add under fixtures/sites. If you include a real URL,
+        make sure you are allowed to share it. Do not include personal data.
+  - type: input
+    id: version
+    attributes:
+      label: dpdp-kit version and catalogue version (from the report footer)

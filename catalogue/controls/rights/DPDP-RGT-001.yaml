@@ -1,0 +1,27 @@
+id: DPDP-RGT-001
+title: Data Principals can exercise access, correction, erasure and nomination rights
+description: >
+  The website or app publishes how a Data Principal can request a summary of
+  their personal data and its processing, correction, completion, updating or
+  erasure, and nominate another person, including any identifier needed, and
+  those requests are fulfilled.
+citation:
+  act: ["Section 11", "Section 12", "Section 14"]
+  rules: ["Rule 14"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-RGT-001.q1
+      question: >
+        Does the website/app publish how to request access, correction, completion,
+        updating and erasure, and how to nominate another person, and are such requests
+        tracked to completion?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: ""
+review_status: draft
+since: "2025.11-draft.1"

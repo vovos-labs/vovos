@@ -1,0 +1,21 @@
+id: ACME-POL-001
+title: Every Data Processor has a signed data processing agreement
+description: >
+  Internal policy: every vendor that processes personal data on our behalf is in
+  the vendor register with a signed data processing agreement that includes
+  DPDP security and erasure clauses.
+citation:
+  act: ["Section 8(2)"]
+  other: ["ACME Information Security Policy, clause 7.3"]
+severity: high
+tags: [acme]
+test_methods:
+  - plugin: acme
+    check: dpa_register
+    params:
+      register: examples/plugins/vendors.csv
+interpretation:
+  confidence: high
+  note: Organisation-specific control shipped as an example of extending the kit.
+review_status: draft
+since: "local"

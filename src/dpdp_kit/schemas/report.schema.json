@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dpdp-kit/dpdp-kit/schemas/report.schema.json",
+  "title": "DPDP Self-Test Kit report",
+  "description": "Stable machine-readable output. Other tools (GRC platforms, consent managers, dashboards) should consume this file rather than the HTML.",
+  "type": "object",
+  "required": ["schema", "tool", "catalogue", "generated_at", "profile", "target", "summary", "disclaimer", "controls"],
+  "properties": {
+    "schema": { "const": "dpdp-kit/report/v1" },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": { "name": { "type": "string" }, "version": { "type": "string" } }
+    },
+    "catalogue": {
+      "type": "object",
+      "required": ["version"],
+      "properties": { "version": { "type": "string" }, "status": { "type": ["string", "null"] }, "law": {} }
+    },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "started_at": { "type": "string", "format": "date-time" },
+    "profile": {
+      "type": "object",
+      "required": ["id", "chain"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "chain": { "type": "array", "items": { "type": "string" } },
+        "overlay": { "type": ["string", "null"] }
+      }
+    },
+    "target": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "required": ["controls", "by_status", "open_gaps_by_severity"],
+      "properties": {
+        "controls": { "type": "integer", "minimum": 0 },
+        "by_status": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "open_gaps_by_severity": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "methods_run_by_kind": { "type": "object", "additionalProperties": { "type": "integer" } }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "disclaimer": { "type": "string", "minLength": 1 },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "severity", "status", "citation", "methods", "review_status"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "severity": { "enum": ["critical", "high", "medium", "low"] },
+          "catalogue_severity": { "enum": ["critical", "high", "medium", "low"] },
+          "status": { "enum": ["pass", "fail", "review", "attested", "not_tested", "n/a"] },
+          "citation": { "type": "object" },
+          "review_status": { "type": "string" },
+          "excluded_reason": { "type": "string" },
+          "override_reason": { "type": "string" },
+          "methods": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["method", "status", "detail", "evidence"],
+              "properties": {
+                "method": { "type": "string" },
+                "kind": { "type": "string" },
+                "status": { "enum": ["pass", "fail", "review", "attested", "not_tested", "error"] },
+                "detail": { "type": "string" },
+                "evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["kind", "label"],
+                    "properties": {
+                      "kind": { "enum": ["screenshot", "file", "json", "text", "reference"] },
+                      "label": { "type": "string" },
+                      "path": { "type": "string" },
+                      "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+                      "content": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

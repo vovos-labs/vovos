@@ -1,0 +1,31 @@
+id: DPDP-CM-005
+title: Consent Manager's platform is interoperable, certified and periodically audited
+description: >
+  The Consent Manager's platform lets a Data Principal give, manage, review and
+  withdraw consent through an interoperable platform, holds independent
+  certification of conformity with the technical and organisational standards
+  the Board specifies, and is audited periodically, with outcomes reported to the Board.
+citation:
+  act: ["Section 6(7)"]
+  rules: ["Rule 4"]
+  schedules: ["First Schedule"]
+severity: high
+tags: [consent-manager]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CM-005.q1
+      question: >
+        Does the platform interoperate with Data Fiduciaries according to the standards
+        the Board has published, is it independently certified as conforming, and is an
+        audit mechanism in place whose outcomes are reported to the Board?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    Interoperability and certification standards depend on what the Board publishes.
+    Until then, answer "partial" and reference the specification you follow. An
+    api-probe conformance suite for consent artefact lifecycle is planned.
+review_status: draft
+since: "2025.11-draft.1"

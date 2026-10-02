@@ -1,0 +1,24 @@
+id: DPDP-CON-003
+title: Declining is as readily available as accepting
+description: >
+  The consent interface lets the Data Principal decline as directly as they can
+  accept, so that consent is free and not obtained through friction or design pressure.
+citation:
+  act: ["Section 6(1)"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: web-scan
+    check: reject_option_first_layer
+    params:
+      require_first_layer_reject: true
+interpretation:
+  confidence: contested
+  note: >
+    Section 6(1) requires consent to be "free". The Act does not say a reject
+    button must sit on the first layer. This control uses first-layer parity as
+    a proxy for free consent, in line with international practice on dark
+    patterns. An organisation that disagrees can set require_first_layer_reject
+    to false in an overlay, which turns a failure into REVIEW, and must record why.
+review_status: draft
+since: "2025.11-draft.1"

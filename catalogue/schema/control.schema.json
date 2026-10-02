@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dpdp-kit/dpdp-kit/catalogue/schema/control.schema.json",
+  "title": "DPDP control",
+  "description": "One atomic, testable requirement derived from the DPDP Act, 2023 and/or DPDP Rules, 2025. One file per control; the file name must equal the id.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "description", "citation", "severity", "tags", "test_methods", "interpretation", "review_status", "since"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]*(-[A-Z0-9]+)+$",
+      "description": "DPDP-<AREA>-<NNN> for catalogue controls. Organisation controls must use their own prefix, e.g. ACME-POL-001."
+    },
+    "title": { "type": "string", "minLength": 5, "maxLength": 120 },
+    "description": { "type": "string", "minLength": 20, "description": "Plain-language statement of what must be true." },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "act": { "type": "array", "items": { "type": "string" } },
+        "rules": { "type": "array", "items": { "type": "string" } },
+        "schedules": { "type": "array", "items": { "type": "string" } },
+        "other": { "type": "array", "items": { "type": "string" }, "description": "Non-DPDP sources, e.g. sectoral regulations or internal policy." }
+      }
+    },
+    "severity": { "enum": ["critical", "high", "medium", "low"] },
+    "tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Profiles select controls by tag: base, children, sdf, consent-manager, government, ..."
+    },
+    "test_methods": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["plugin", "check"],
+        "properties": {
+          "plugin": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "check": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "params": { "type": "object" }
+        }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confidence", "note"],
+      "properties": {
+        "confidence": {
+          "enum": ["high", "medium", "contested"],
+          "description": "high: the text is explicit. medium: the test is a reasonable proxy. contested: credible readings differ; see the note and the linked RFC."
+        },
+        "note": { "type": "string" },
+        "rfc": { "type": "string", "description": "Link to the public interpretation discussion, if any." }
+      }
+    },
+    "review_status": {
+      "enum": ["draft", "legal-reviewed", "deprecated"],
+      "description": "draft until a qualified reviewer signs off in the PR."
+    },
+    "since": { "type": "string", "description": "Catalogue version in which the control was introduced or last changed in meaning." },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "url"],
+        "properties": { "title": { "type": "string" }, "url": { "type": "string" } }
+      }
+    }
+  }
+}

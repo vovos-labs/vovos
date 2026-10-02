@@ -1,0 +1,8 @@
+id: sdf
+title: Significant Data Fiduciary
+description: >
+  Base obligations plus the additional obligations of a Significant Data
+  Fiduciary under Section 10 and Rule 13.
+extends: [base]
+include:
+  tags: [sdf]

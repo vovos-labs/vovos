@@ -1,0 +1,26 @@
+id: DPDP-DPO-001
+title: Contact details of the DPO or responsible person are published
+description: >
+  The business contact information of the Data Protection Officer (if any), or of
+  a person able to answer questions about the processing of personal data, is
+  published prominently on the website or app and included in every response to
+  a Data Principal exercising their rights.
+citation:
+  act: ["Section 8(9)"]
+  rules: ["Rule 9"]
+severity: medium
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-DPO-001.q1
+      question: >
+        Are the DPO's (or responsible person's) business contact details published
+        prominently on the website/app and included in every response to a rights request?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: A web check that looks for this contact on the site is planned.
+review_status: draft
+since: "2025.11-draft.1"

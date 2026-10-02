@@ -1,0 +1,5 @@
+# Normalise line endings in the repository regardless of contributors' OS settings.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary

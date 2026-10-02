@@ -1,0 +1,24 @@
+id: DPDP-SDF-002
+title: A Data Protection Officer based in India is appointed
+description: >
+  A Significant Data Fiduciary appoints a Data Protection Officer who is based in
+  India, represents the Significant Data Fiduciary, is responsible to its Board of
+  Directors or similar governing body, and is the point of contact for grievance redressal.
+citation:
+  act: ["Section 10(2)(a)"]
+severity: high
+tags: [sdf]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-SDF-002.q1
+      question: >
+        Is a DPO appointed who is based in India, reports to the Board of Directors (or
+        equivalent), and is the point of contact for grievances?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: ""
+review_status: draft
+since: "2025.11-draft.1"

@@ -1,0 +1,28 @@
+id: DPDP-GRV-001
+title: An effective grievance redressal mechanism responds within the published period
+description: >
+  The Data Fiduciary runs a readily available grievance redressal mechanism,
+  publishes the period within which it will respond, and responds within that
+  period, which must not exceed the ceiling set by the Rules.
+citation:
+  act: ["Section 8(10)", "Section 13"]
+  rules: ["Rule 14"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-GRV-001.q1
+      question: >
+        Is there a published grievance channel with a stated response period within the
+        Rule 14 ceiling (90 days), with tracking that shows grievances are answered in time?
+      expect: "yes"
+interpretation:
+  confidence: medium
+  note: >
+    Rule 14 sets an outer limit for responding to grievances; a shorter period
+    published by the fiduciary is binding on it. The 90-day figure should be
+    re-checked against the notified text at legal review.
+review_status: draft
+since: "2025.11-draft.1"

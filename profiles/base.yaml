@@ -1,0 +1,7 @@
+id: base
+title: Base (every Data Fiduciary)
+description: >
+  Obligations that apply to any Data Fiduciary processing digital personal data
+  on the basis of consent. Every other profile builds on this one.
+include:
+  tags: [base]

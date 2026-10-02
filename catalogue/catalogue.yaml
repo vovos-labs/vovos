@@ -1,0 +1,14 @@
+version: "2025.11-draft.1"
+status: draft
+license: CC-BY-4.0
+law:
+  - title: The Digital Personal Data Protection Act, 2023 (No. 22 of 2023)
+    as_of: "2023-08-11"
+    url: https://www.meity.gov.in/
+  - title: Digital Personal Data Protection Rules, 2025
+    as_of: "2025-11"
+    url: https://www.meity.gov.in/
+    note: >
+      The Rules commence in phases. Check the notification for the dates on which
+      each Rule takes effect before treating a control as currently enforceable.
+changelog: ../CHANGELOG.md

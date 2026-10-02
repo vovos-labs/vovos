@@ -1,0 +1,34 @@
+id: DPDP-CM-001
+title: Consent Manager is registered with the Board and meets the eligibility conditions
+description: >
+  The entity acting as a Consent Manager is registered with the Data Protection
+  Board and continues to meet the conditions of registration: it is a company
+  incorporated in India, has sufficient technical, operational and financial
+  capacity, and has a net worth of at least the amount the First Schedule specifies.
+citation:
+  act: ["Section 6(7)", "Section 6(9)"]
+  rules: ["Rule 4"]
+  schedules: ["First Schedule, Part A"]
+severity: critical
+tags: [consent-manager]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CM-001.q1
+      question: >
+        Is the entity registered with the Data Protection Board as a Consent Manager
+        (or has it applied), and does it currently meet every First Schedule Part A
+        condition, including incorporation in India and the minimum net worth?
+      expect: "yes"
+      help: >
+        Answer "partial" if an application is pending. Cite the registration number
+        or application reference in evidence.
+interpretation:
+  confidence: high
+  note: >
+    The Consent Manager provisions commence later than the Act's other provisions;
+    check the commencement date. A self-assessment cannot establish registration;
+    only the Board's register can.
+review_status: draft
+since: "2025.11-draft.1"

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fixture: conforming shop</title>
+<!-- Trackers are loaded only after the visitor chooses "Accept all". -->
+<style>
+  body { font-family: sans-serif; margin: 0; padding: 24px; }
+  .consent { position: fixed; bottom: 0; left: 0; right: 0; background: #f4f4f4; padding: 16px; border-top: 1px solid #ccc; }
+  .consent button { margin-right: 8px; padding: 8px 14px; }
+</style>
+</head>
+<body>
+<h1>Example Shop</h1>
+<p>Fixture page used by the dpdp-kit test suite.</p>
+
+<div class="consent" role="dialog" aria-label="Consent preferences">
+  <p>We would like your consent to use your personal data for analytics and marketing.
+     Read our <a href="/privacy-notice.html">privacy notice</a> to see what we collect and why.</p>
+  <label><input type="checkbox" checked disabled> Necessary (always on)</label>
+  <label><input type="checkbox" id="analytics"> Analytics</label>
+  <label><input type="checkbox" id="marketing"> Marketing</label>
+  <div style="margin-top:8px">
+    <button id="accept">Accept all</button>
+    <button id="reject">Reject all</button>
+    <button id="save">Save choices</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('accept').addEventListener('click', () => {
+    const s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-FIXTURE';
+    document.head.appendChild(s);
+    document.querySelector('.consent').remove();
+  });
+  document.getElementById('reject').addEventListener('click', () => document.querySelector('.consent').remove());
+</script>
+</body>
+</html>

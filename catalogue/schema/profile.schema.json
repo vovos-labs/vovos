@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dpdp-kit/dpdp-kit/catalogue/schema/profile.schema.json",
+  "title": "DPDP profile or organisation overlay",
+  "description": "Profiles select controls by tag or id and may inherit from other profiles. An overlay has the same shape, no id and no extends, and is applied on top of the chosen profile.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "extends": { "type": "array", "items": { "type": "string" } },
+    "include": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "ids": { "type": "array", "items": { "type": "string" }, "description": "Exact ids or glob patterns such as ACME-*." }
+      }
+    },
+    "exclude": {
+      "type": "object",
+      "description": "Control id -> documented reason. Excluded controls appear in the report as N/A with the reason.",
+      "additionalProperties": { "type": "string", "minLength": 10 }
+    },
+    "overrides": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reason"],
+        "properties": {
+          "severity": { "enum": ["critical", "high", "medium", "low"] },
+          "params": {
+            "type": "object",
+            "description": "Check key (plugin.check) -> parameters merged over the control's own.",
+            "additionalProperties": { "type": "object" }
+          },
+          "reason": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "extra_controls": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Directories of additional control YAML files, relative to this file."
+    }
+  }
+}

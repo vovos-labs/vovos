@@ -1,0 +1,39 @@
+id: DPDP-SEC-001
+title: Reasonable security safeguards are in place, including access logs kept for one year
+description: >
+  The Data Fiduciary protects personal data in its possession or control,
+  including data processed by its Data Processors, with reasonable security
+  safeguards. These include encryption, masking or tokenisation where suitable,
+  access control, logging and monitoring of access, backups for continuity,
+  contractual safeguards with Data Processors, and retention of the relevant
+  logs for at least one year.
+citation:
+  act: ["Section 8(5)"]
+  rules: ["Rule 6"]
+severity: critical
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-SEC-001.q1
+      question: >
+        Are encryption (or masking/tokenisation), access control, access logging and
+        monitoring, and backups in place for all systems holding personal data, and
+        are access logs retained for at least one year?
+      expect: "yes"
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-SEC-001.q2
+      question: >
+        Do contracts with every Data Processor require them to maintain equivalent
+        security safeguards?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: >
+    A config plugin that reads exported cloud and logging configuration is planned.
+    Until then this control relies on attestation backed by evidence references.
+review_status: draft
+since: "2025.11-draft.1"

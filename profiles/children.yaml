@@ -1,0 +1,8 @@
+id: children
+title: Processes children's personal data
+description: >
+  Base obligations plus Section 9 and Rule 10 for platforms whose users
+  include children, or persons with disability who have a lawful guardian.
+extends: [base]
+include:
+  tags: [children]

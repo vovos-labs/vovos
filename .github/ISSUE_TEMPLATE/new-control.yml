@@ -1,0 +1,30 @@
+name: New control
+description: Propose a requirement the catalogue does not yet cover.
+title: "[Control] <short title>"
+labels: ["catalogue"]
+body:
+  - type: textarea
+    id: requirement
+    attributes:
+      label: Requirement
+      description: What must be true, in plain language.
+    validations:
+      required: true
+  - type: input
+    id: citation
+    attributes:
+      label: Legal citation
+      placeholder: Section 8(9); Rule 9
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How could it be tested?
+      description: An automated check (which plugin?), a questionnaire question, or both.
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Applies to
+      multiple: true
+      options: [base, sme, sdf, children, government, consent-manager, other]

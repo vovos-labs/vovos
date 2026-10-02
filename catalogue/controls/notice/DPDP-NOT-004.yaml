@@ -1,0 +1,26 @@
+id: DPDP-NOT-004
+title: Notice explains how to withdraw consent, exercise rights and complain to the Board
+description: >
+  The notice tells the Data Principal how to withdraw consent, how to exercise
+  their rights and use grievance redressal, and how to make a complaint to the
+  Data Protection Board, with a link or other direct means for each.
+citation:
+  act: ["Section 5(1)(ii)", "Section 5(1)(iii)"]
+  rules: ["Rule 3"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-NOT-004.q1
+      question: >
+        Does the notice give a direct link or means to (a) withdraw consent,
+        (b) exercise Data Principal rights and grievance redressal, and
+        (c) complain to the Data Protection Board?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: ""
+review_status: draft
+since: "2025.11-draft.1"

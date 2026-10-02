@@ -1,0 +1,10 @@
+id: consent-manager
+title: Consent Manager (registered or applying under Rule 4)
+description: >
+  For entities operating, or applying to operate, as a Consent Manager under
+  Section 6(7)-(9). Adds the registration conditions and obligations of the
+  First Schedule to the base profile, because a Consent Manager is also a
+  Data Fiduciary for its own processing.
+extends: [base]
+include:
+  tags: [consent-manager]

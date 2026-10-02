@@ -1,0 +1,24 @@
+id: DPDP-CON-005
+title: Withdrawal stops processing, including by Data Processors
+description: >
+  When consent is withdrawn, the Data Fiduciary stops processing within a
+  reasonable time and causes its Data Processors to stop, unless another
+  lawful basis applies.
+citation:
+  act: ["Section 6(6)"]
+severity: high
+tags: [base]
+test_methods:
+  - plugin: questionnaire
+    check: ask
+    params:
+      id: DPDP-CON-005.q1
+      question: >
+        Is a withdrawal propagated automatically to every system and Data Processor
+        that relies on that consent, within a defined maximum time and with a record that it happened?
+      expect: "yes"
+interpretation:
+  confidence: high
+  note: An api-probe check that verifies propagation end to end is planned.
+review_status: draft
+since: "2025.11-draft.1"
